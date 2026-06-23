@@ -1,0 +1,78 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/root/.openclaw/workspace",
+      "thinkingDefault": "minimal",
+      "model": {
+        "primary": "openai/gpt-5.4-nano"
+      },
+      "models": {
+        "openai/gpt-5.4-nano": {}
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": {
+        "source": "env",
+        "provider": "default",
+        "id": "OPENCLAW_GATEWAY_TOKEN"
+      }
+    },
+    "port": 18789,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "plugins": {
+    "entries": {
+      "openai": {
+        "enabled": true
+      },
+      "telegram": {
+        "enabled": true
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "openai": {
+        "agentRuntime": {
+          "id": "openclaw"
+        },
+        "apiKey": {
+          "source": "env",
+          "provider": "default",
+          "id": "OPENAI_API_KEY"
+        }
+      }
+    }
+  },
+  "auth": {
+    "profiles": {
+      "openai:api-key": {
+        "provider": "openai",
+        "mode": "api_key"
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": {
+        "source": "env",
+        "provider": "default",
+        "id": "TELEGRAM_BOT_TOKEN"
+      },
+      "dmPolicy": "open",
+      "allowFrom": [
+        "*"
+      ],
+      "groupPolicy": "allowlist"
+    }
+  }
+}

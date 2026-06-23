@@ -1,0 +1,16 @@
+.env
+*.env
+*.log
+*.bak
+*.pid
+
+# Local Codex/OpenClaw runtime state
+.agents/
+.codex/
+.openclaw/
+openclaw.json
+openclaw.json.*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
